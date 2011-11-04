@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /macros/latex/contrib/plates
+# catalog-date 2007-01-08 00:37:16 +0100
+# catalog-license lppl
+# catalog-version 0.1
 Name:		texlive-plates
 Version:	0.1
 Release:	1
@@ -43,6 +49,7 @@ the figure environment for such colour images.
 %doc %{_texmfdistdir}/doc/latex/plates/README
 %doc %{_texmfdistdir}/doc/latex/plates/plates.pdf
 %doc %{_texmfdistdir}/doc/latex/plates/plates.tex
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -53,3 +60,5 @@ the figure environment for such colour images.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
