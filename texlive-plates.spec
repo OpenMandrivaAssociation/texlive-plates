@@ -6,7 +6,7 @@
 # catalog-version 0.1
 Name:		texlive-plates
 Version:	0.1
-Release:	8
+Release:	9
 Summary:	Arrange for "plates" sections of documents
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/plates
