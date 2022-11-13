@@ -1,18 +1,12 @@
-# revision 15878
-# category Package
-# catalog-ctan /macros/latex/contrib/plates
-# catalog-date 2007-01-08 00:37:16 +0100
-# catalog-license lppl
-# catalog-version 0.1
 Name:		texlive-plates
-Version:	0.1
-Release:	11
+Version:	15878
+Release:	1
 Summary:	Arrange for "plates" sections of documents
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/plates
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/plates.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/plates.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/plates.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/plates.doc.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -26,12 +20,12 @@ package provides a plate environment that takes the place of
 the figure environment for such colour images.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -43,24 +37,10 @@ the figure environment for such colour images.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.1-2
-+ Revision: 754979
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 0.1-1
-+ Revision: 719274
-- texlive-plates
-- texlive-plates
-- texlive-plates
-- texlive-plates
-
