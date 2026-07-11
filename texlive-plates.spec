@@ -1,46 +1,24 @@
-Name:		texlive-plates
-Version:	15878
-Release:	2
-Summary:	Arrange for "plates" sections of documents
+%global tl_name plates
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.1
+Release:	%{tl_revision}.1
+Summary:	Arrange for plates sections of documents
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/plates
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/plates.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/plates.doc.r%{version}.tar.xz
+License:	lppl1.1
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/plates.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/plates.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The plates package provides a simple facility for inserting
-colour figures in a document when they should be gathered and
-printed together as in a book's section of colour plates. The
-package provides a plate environment that takes the place of
-the figure environment for such colour images.
+The plates package provides a simple facility for inserting colour
+figures in a document when they should be gathered and printed together
+as in a book's section of colour plates. The package provides a plate
+environment that takes the place of the figure environment for such
+colour images.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/plates/endplate.sty
-%{_texmfdistdir}/tex/latex/plates/plates.sty
-%doc %{_texmfdistdir}/doc/latex/plates/README
-%doc %{_texmfdistdir}/doc/latex/plates/plates.pdf
-%doc %{_texmfdistdir}/doc/latex/plates/plates.tex
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc %{buildroot}%{_texmfdistdir}
